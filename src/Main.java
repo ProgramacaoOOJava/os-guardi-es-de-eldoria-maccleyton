@@ -1,24 +1,40 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Instanciando os dois personagens
-        Personagem p1 = new Personagem();
-        Personagem p2 = new Personagem();
+        // Instanciando os três personagens
+        Guerreiro galahad = new Guerreiro("Galahad", 5, 300, 600, 150);
+        Mago cronos = new Mago("Cronos", 10, 200, 500, 200);
+        Arqueiro centauro = new Arqueiro("Centauro", 7, 500, 300, 300);
 
-        // Atribuindo valores diretamente aos atributos
-        p1.nome = "Cronos";
-        p1.classe = "Mago";
-        p1.nivel = 10;
-        p1.pontosDeVida = 200;
-        p1.poderBase = 500;
+        // Exibindo status
+        galahad.exibirStatus();
+        cronos.exibirStatus();
+        centauro.exibirStatus();
 
-        p2.nome = "Centauro";
-        p2.classe = "Arqueiro";
-        p2.nivel = 7;
-        p2.pontosDeVida = 500;
-        p2.poderBase = 300;
+        // Usando habilidades especiais
+        galahad.usarHabilidadeEspecial();
+        cronos.usarHabilidadeEspecial();
+        centauro.usarHabilidadeEspecial();
 
-        p1.exibirStatus();
-        p2.exibirStatus();
+        // Demonstração de Polimorfismo
+        System.out.println("\n--- Demonstração de Polimorfismo ---");
+        List<Personagem> herois = new ArrayList<>();
+        herois.add(galahad);
+        herois.add(cronos);
+        herois.add(centauro);
+
+        herois.add(new Guerreiro("Arthur", 9, 350, 550, 350));
+        herois.add(new Mago("Merlin", 8, 250, 400, 300));
+        herois.add(new Arqueiro("Valkyria", 6, 350, 400, 200));
+
+        for (Personagem p : herois) {
+            p.exibirStatus();
+            p.usarHabilidadeEspecial();
+            System.out.println("-------------------------------------");
+        }
     }
+
 }
