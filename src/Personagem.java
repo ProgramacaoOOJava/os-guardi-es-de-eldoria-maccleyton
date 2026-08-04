@@ -1,12 +1,12 @@
 // Classe que representa um personagem do jogo
-public abstract class Personagem {
+public abstract class Personagem implements Comparable<Personagem> {
 
     // Atributos dos personagens
-    String nome;
-    String classe;
-    int nivel;
-    int pontosDeVida;
-    double poderBase;
+    protected String nome;
+    protected String classe;
+    protected int nivel;
+    protected int pontosDeVida;
+    protected double poderBase;
 
     // Construtor da classe personagem
     public Personagem(String nome, String classe, int nivel, int pontosDeVida, double poderBase) {
@@ -28,4 +28,29 @@ public abstract class Personagem {
     }
 
     public abstract void usarHabilidadeEspecial();
+
+    @Override
+    public int compareTo(Personagem outro) {
+        return Integer.compare(this.nivel, outro.nivel);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getPontosDeVida() {
+        return pontosDeVida;
+    }
+
+    public double getPoderBase() {
+        return poderBase;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
 }
